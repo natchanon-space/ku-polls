@@ -4,4 +4,4 @@ KU Polls is python-based surveying web application, which is designed for [Kaset
 
 For more details: 
   - [Project Wiki](../../wiki)
-  - [Vision Statement](../../wiki/vistion-statement)
+  - [Vision Statement](../../wiki/vision-statement)
