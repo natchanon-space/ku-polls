@@ -2,7 +2,8 @@
 
 KU Polls is python-based surveying web application, which is designed for [Kasetsart University](https://www.ku.ac.th/th) staff and students.
 
-For more details: 
+## Project Documents
   - [Project Wiki](../../wiki)
   - [Vision Statement](../../wiki/vision-statement)
   - [Requirements](../../wiki/requirements)
+  - [Iteration 1 Plan](../../wiki/iteration-1-plan)
