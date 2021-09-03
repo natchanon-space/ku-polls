@@ -1,0 +1,74 @@
+/*
+    colors palette
+    #e9d985 Flax
+    #b2bd7e Misty Moss
+    #749c75 Russian Green
+    #6a5d7b Old Lavender
+    #5d4a66 English Violet
+*/
+
+* {
+    font-family: 'Glory', sans-serif;
+    color: #5d4a66;
+}
+
+body {
+    background: #e9d985;
+}
+
+.nav-bar {
+    margin: 0;
+    padding: 5px 5px;
+    display: flex;
+    background: #749c75;
+    border-radius: 10px;
+}
+
+.nav-bar .nav-item {
+    font-size: 28px;
+    padding: 5px 10px;
+    float: right;
+}
+
+.nav-bar .nav-item a {
+    font-size: 28px;
+    padding: 5px 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.nav-bar .nav-item a:hover {
+    background-color: #b2bd7e;
+    border-radius: 10px;
+}
+
+.question {
+    margin: 10px 10px;
+    padding: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.3);
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.question .question-item {
+    margin: 10px 10px;
+    padding: 10px;
+    border: 5px solid #749c75;
+    border-radius: 10px;
+    align-self: center;
+}
+
+.question .question-item a {
+    text-decoration: none;
+    color: #5d4a66;
+}
+
+.question .question-item:hover {
+    box-shadow: 3px 3px 5px #5d4a66;
+}
+
+.center {
+    text-align: center;
+}
