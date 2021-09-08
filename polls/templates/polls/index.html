@@ -2,18 +2,15 @@
 
 {% block content %}
 {% if latest_question_list %}
-    {% comment %} <ul class="question">
-    {% for question in latest_question_list %}
-        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
-    {% endfor %}
-    </ul> {% endcomment %}
     <div class="question">
         <h1 class="center">QESTIONS LIST</h1>
         {% for question in latest_question_list %}
         <div class="question-item">
-            <a href="{% url 'polls:detail' question.id %}">
-                <h3>{{ question.question_text }}</h3>
-            </a>           
+            <h3>{{ question.question_text }}</h3>
+            <div>
+                <a href="{% url 'polls:detail' question.id %}">vote</a>
+                <a href="{% url 'polls:results' question.id %}">results</a>
+            </div>
         </div>
         {% endfor %}
     </div>
