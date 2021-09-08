@@ -1,6 +1,15 @@
 {% extends "polls/base.html" %}
 
 {% block content %}
+
+{% if messages %}
+<div class="message">
+    {% for message in messages %}
+    <p>{{ message }}</p>
+    {% endfor %}
+</div>
+{% endif %}
+
 {% if latest_question_list %}
     <div class="question">
         <h1 class="center">QESTIONS LIST</h1>
@@ -9,9 +18,9 @@
             <h3>{{ question.question_text }}</h3>
             <div>
                 {% if question.can_vote %}
-                <a href="{% url 'polls:detail' question.id %}">vote</a>
+                <a href="{% url 'polls:detail' question.id %}">Vote</a>
                 {% endif %}
-                <a href="{% url 'polls:results' question.id %}">results</a>
+                <a href="{% url 'polls:results' question.id %}">Results</a>
             </div>
         </div>
         {% endfor %}
@@ -19,4 +28,5 @@
 {% else %}
     <p>No polls are available.</p>
 {% endif %}
+
 {% endblock %}

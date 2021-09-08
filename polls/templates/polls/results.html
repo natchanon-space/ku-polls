@@ -39,8 +39,11 @@
 <h1>{{ question.question_text }}</h1>
 
 <div id="chart_div"></div>
+
+{% if question.can_vote %}
 <br />
 <a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+{% endif %}
 <br />
 <a href="{% url 'polls:index' %}">Back to List of Polls</a>
 {% endblock %}
