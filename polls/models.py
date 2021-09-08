@@ -13,10 +13,12 @@ class Question(models.Model):
         return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
     def is_published(self):
-        pass
+        now = timezone.now()
+        return now >= self.pub_date
 
     def can_vote(self):
-        pass
+        now = timezone.now()
+        return self.is_published() and now <= self.end_date
 
     def __str__(self):
         return self.question_text
