@@ -11,9 +11,13 @@ class IndexView(generic.ListView):
     context_object_name = 'latest_question_list'
 
     def get_queryset(self):
+        active_question_ids = []
+        for question in Question.objects.all():
+            if question.is_published():
+                active_question_ids.append(question.id)
         return Question.objects.filter(
-            pub_date__lte=timezone.now()
-        ).order_by('-pub_date')[:5]
+            id__in=active_question_ids
+        ).order_by('-pub_date')
 
 
 class DetailView(generic.DetailView):

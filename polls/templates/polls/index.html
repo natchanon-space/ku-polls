@@ -8,7 +8,9 @@
         <div class="question-item">
             <h3>{{ question.question_text }}</h3>
             <div>
+                {% if question.can_vote %}
                 <a href="{% url 'polls:detail' question.id %}">vote</a>
+                {% endif %}
                 <a href="{% url 'polls:results' question.id %}">results</a>
             </div>
         </div>
