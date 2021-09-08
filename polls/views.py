@@ -7,18 +7,17 @@ from django.contrib import messages
 from .models import Choice, Question
 
 
-class IndexView(generic.ListView):
-    template_name = 'polls/index.html'
-    context_object_name = 'latest_question_list'
-
-    def get_queryset(self):
-        active_question_ids = []
-        for question in Question.objects.all():
-            if question.is_published():
-                active_question_ids.append(question.id)
-        return Question.objects.filter(
-            id__in=active_question_ids
-        ).order_by('-pub_date')
+def index(request):
+    # get list of can_vote questions
+    active_question_ids = []
+    for question in Question.objects.all():
+        if question.is_published():
+            active_question_ids.append(question.id)
+    questions = Question.objects.filter(
+        id__in=active_question_ids
+    ).order_by('-pub_date')
+    context = {'latest_question_list': questions}
+    return render(request, 'polls/index.html', context)
 
 
 def detail(request, question_id):

@@ -11,7 +11,7 @@
             var data = google.visualization.arrayToDataTable([
                 ['Choices', 'Votes', {role: 'annotation'}, {role: 'style'}],
                 {% for choice in question.choice_set.all %}
-                ['{{ choice.choice_text }}', {{ choice.votes }}, "{{ choice.votes }}", "#749c75"],
+                ["{{ choice.choice_text|safe }}", {{ choice.votes|safe }}, "{{ choice.votes|safe }}", "#749c75"],
                 {% endfor %}
             ]);
 
