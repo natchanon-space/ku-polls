@@ -85,6 +85,7 @@ class QuestionModelTests(TestCase):
         can_vote() return False for question whose end_date 
         is more than the current time
         """
+        pub_date = timezone.now()
         end_date = timezone.now() - datetime.timedelta(minutes=5)
-        ended_question = Question(end_date=end_date)
+        ended_question = Question(pub_date=pub_date, end_date=end_date)
         self.assertIs(ended_question.can_vote(), False)
