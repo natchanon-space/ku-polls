@@ -11,7 +11,7 @@
             var data = google.visualization.arrayToDataTable([
                 ['Choices', 'Votes', {role: 'annotation'}, {role: 'style'}],
                 {% for choice in question.choice_set.all %}
-                ['{{ choice.choice_text }}', {{ choice.votes }}, "{{ choice.votes }}", "#749c75"],
+                ["{{ choice.choice_text|safe }}", {{ choice.votes|safe }}, "{{ choice.votes|safe }}", "#749c75"],
                 {% endfor %}
             ]);
 
@@ -39,6 +39,11 @@
 <h1>{{ question.question_text }}</h1>
 
 <div id="chart_div"></div>
+
+{% if question.can_vote %}
 <br />
 <a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+{% endif %}
+<br />
+<a href="{% url 'polls:index' %}">Back to List of Polls</a>
 {% endblock %}
