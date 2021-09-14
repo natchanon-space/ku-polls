@@ -36,9 +36,11 @@
 
 {% block content %}
 
-<h1>{{ question.question_text }}</h1>
+<div class="question">
+    <h1>{{ question.question_text }}</h1>
 
-<div id="chart_div"></div>
+    <div id="chart_div"></div>
+</div>
 
 {% if question.can_vote %}
 <br />
