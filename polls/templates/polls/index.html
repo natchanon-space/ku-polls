@@ -12,10 +12,17 @@
 
 {% if latest_question_list %}
     <div class="question">
-        <h1 class="center">QESTIONS LIST</h1>
+        <h1>QESTIONS LIST</h1>
         {% for question in latest_question_list %}
         <div class="question-item">
-            <h3>{{ question.question_text }}</h3>
+            <h2>{{ question.question_text }}</h2>
+
+            <div>
+                <div><strong>Published Date:</strong> {{ question.pub_date }}</div>
+                <div><strong>End Date:</strong> {{ question.end_date }}</div>
+            </div>
+            <br />
+
             <div>
                 {% if question.can_vote %}
                 <a href="{% url 'polls:detail' question.id %}">Vote</a>
