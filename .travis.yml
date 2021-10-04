@@ -8,8 +8,8 @@ git:
   depth: 1
 
 env:
-  - SECRET_KEY="SECRET_KEY"
-  - DEBUG=True
+  # One build will be triggered for each line in the env array.
+  - SECRET_KEY="SECRET_KEY" DEBUG=True
 
 # Install dependencies
 install:
