@@ -1,4 +1,6 @@
 # KU Polls
+[![Build Status](https://app.travis-ci.com/natchanon-space/ku-polls.svg?branch=master)](https://app.travis-ci.com/natchanon-space/ku-polls)
+[![codecov](https://codecov.io/gh/natchanon-space/ku-polls/branch/master/graph/badge.svg?token=IPF2OOXOBS)](https://codecov.io/gh/natchanon-space/ku-polls)
 
 KU Polls is python-based surveying web application, which is designed for [Kasetsart University](https://www.ku.ac.th/th) staff and students.
 

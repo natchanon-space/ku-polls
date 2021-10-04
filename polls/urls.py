@@ -1,4 +1,3 @@
-from typing import NewType
 from django.urls import path
 from . import views
 

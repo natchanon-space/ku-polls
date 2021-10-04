@@ -1,8 +1,6 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse
-from django.views import generic
-from django.utils import timezone
 from django.contrib import messages
 from .models import Choice, Question
 
