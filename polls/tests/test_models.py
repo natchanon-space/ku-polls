@@ -35,7 +35,7 @@ class QuestionModelTests(TestCase):
 
     def test_is_published_with_on_time_question(self):
         """
-        is_published() return True for question whose pub_date 
+        is_published() return True for question whose pub_date
         is equal or less than current time
         """
         time = timezone.now()
@@ -82,7 +82,7 @@ class QuestionModelTests(TestCase):
 
     def test_can_vote_with_ended_question(self):
         """
-        can_vote() return False for question whose end_date 
+        can_vote() return False for question whose end_date
         is more than the current time
         """
         pub_date = timezone.now()

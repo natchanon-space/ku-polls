@@ -4,12 +4,13 @@ from django.utils import timezone
 from django.urls import reverse
 from polls.models import Question
 
+
 def create_question(question_text, days, active_interval=1):
     """Create a question object
 
     Args:
         question_text: the question text
-        days: published offset to now (negative for questions published 
+        days: published offset to now (negative for questions published
             in the past, positive for questions that have yet to be published).
         active_interval: lenght of active question from start_date to end_date
 
@@ -63,7 +64,7 @@ class QuestionIndexViewTests(TestCase):
         create_question(question_text="Future question.", days=30)
         response = self.client.get(reverse('polls:index'))
         self.assertQuerysetEqual(
-            response.context['latest_question_list'], 
+            response.context['latest_question_list'],
             ['<Question: Ended question.>'])
 
     def test_two_active_questions(self):

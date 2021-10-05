@@ -30,7 +30,7 @@ def detail(request, question_id):
 def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     if question.is_published():
-        return render(request, 'polls/results.html', {'question': question })
+        return render(request, 'polls/results.html', {'question': question})
     else:
         messages.error(request, f'Sorry, Question {question_id} not published yet')
         return redirect('polls:index')
