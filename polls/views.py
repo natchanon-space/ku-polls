@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse
 from django.contrib import messages
 from .models import Choice, Question, Vote
+from utils import create_user
 
 
 def index(request):
@@ -48,9 +49,21 @@ def vote(request, question_id):
     else:
         user_vote = Vote.objects.filter(user=request.user).filter(choice__question=question)
         if len(user_vote) == 0:
-            user_vote = Vote(user=request, choice=selected_choice)
+            user_vote = Vote(user=request.user, choice=selected_choice)
         else:
             user_vote = user_vote[0]
             user_vote.change_vote(new_choice=selected_choice)
         user_vote.save()
         return HttpResponseRedirect(reverse('polls:results', args=(question_id,)))
+
+
+def register(request):
+    if request.method == 'POST':
+        create_user(
+            username=request.POST['username'],
+            email=request.POST["email"],
+            password=request.POST["password"]
+        )
+        # success fully create new user and redirect
+        return redirect('login')
+    return render(request, 'polls/register.html')
