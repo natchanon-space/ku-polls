@@ -1,7 +1,7 @@
-<html>
-<body>
-<h2>You are logged out</h2>
-<p>
-Want to vote again? 
-<a href="{% url 'login'%}">Login again</a>
-</body>
+{% extends 'polls/base.html' %}
+
+{% block content %}
+<div>
+    <h1>You are logged out</h1>
+</div>
+{% endblock %}
