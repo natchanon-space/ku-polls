@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse
 from django.contrib import messages
-from .models import Choice, Question
+from .models import Choice, Question, Vote
 
 
 def index(request):
@@ -46,7 +46,9 @@ def vote(request, question_id):
             'error_message': "You didn't select a choice.",
         })
     else:
-        selected_choice.votes += 1
-        # save in data base
-        selected_choice.save()
+        # selected_choice.votes += 1
+        # # save in data base
+        # selected_choice.save()
+        vote = Vote(user=request.user, choice=selected_choice)
+        vote.save()
         return HttpResponseRedirect(reverse('polls:results', args=(question_id,)))
