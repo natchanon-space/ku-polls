@@ -46,9 +46,11 @@ def vote(request, question_id):
             'error_message': "You didn't select a choice.",
         })
     else:
-        # selected_choice.votes += 1
-        # # save in data base
-        # selected_choice.save()
-        vote = Vote(user=request.user, choice=selected_choice)
-        vote.save()
+        user_vote = Vote.objects.filter(user=request.user).filter(choice__question=question)
+        if len(user_vote) == 0:
+            user_vote = Vote(user=request, choice=selected_choice)
+        else:
+            user_vote = user_vote[0]
+            user_vote.change_vote(new_choice=selected_choice)
+        user_vote.save()
         return HttpResponseRedirect(reverse('polls:results', args=(question_id,)))

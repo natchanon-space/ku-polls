@@ -56,5 +56,8 @@ class Vote(models.Model):
     def question(self):
         return self.choice.question
 
+    def change_vote(self, new_choice):
+        self.choice = new_choice
+
     def __str__(self):
         return f"({self.user.username}) vote ({self.choice}) for ({self.question})"
