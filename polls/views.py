@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse
 from django.contrib import messages
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
 from .models import Choice, Question, Vote
 from utils import create_user
 
@@ -68,7 +68,8 @@ def register(request):
             email=email,
             password=password
         )
-        # success fully create new user and redirect
-        login(request, user=username, password=password)
-        return redirect('login')
+        # authentication checking
+        user = authenticate(request, username=username, password=password)
+        login(request, user)
+        return redirect('polls:index')
     return render(request, 'polls/register.html')
