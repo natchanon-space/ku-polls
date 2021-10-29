@@ -29,3 +29,26 @@ class UserAuthTest(TestCase):
         self.assertEqual(302, response.status_code)
         # should redirect us to the polls index page ("polls:index")
         self.assertRedirects(response, reverse("polls:index"))
+
+    def test_register_view_with_valid_data(self):
+        """Test that a user can register as new user with valid data."""
+        username = "user-2"
+        email = "user@email.com"
+        password = "on my way!"
+        form_data = {"username": username, "email": email, "password": password}
+        response = self.client.post(reverse('polls:register'), form_data)
+        user = User.objects.get(username=username)
+        self.assertTrue(user.is_authenticated)
+        self.assertEqual(302, response.status_code)
+        self.assertRedirects(response, reverse("polls:index"))
+
+    def test_register_view_with_existed_username(self):
+        """Test that a user can't register with existed username"""
+        # expect ValueError user already exist
+        form_data = {
+            "username": self.username,
+            "email": "test@g.com",
+            "password": self.password
+            }
+        with self.assertRaises(ValueError):
+            _ = self.client.post(reverse('polls:register'), form_data)
