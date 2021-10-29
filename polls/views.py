@@ -2,6 +2,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse
 from django.contrib import messages
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required
 from .models import Choice, Question, Vote
 from utils import create_user
 
@@ -37,6 +39,7 @@ def results(request, question_id):
         return redirect('polls:index')
 
 
+@login_required
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     try:
@@ -59,11 +62,16 @@ def vote(request, question_id):
 
 def register(request):
     if request.method == 'POST':
+        username = request.POST['username']
+        email = request.POST["email"]
+        password = request.POST["password"]
         create_user(
-            username=request.POST['username'],
-            email=request.POST["email"],
-            password=request.POST["password"]
+            username=username,
+            email=email,
+            password=password
         )
-        # success fully create new user and redirect
-        return redirect('login')
+        # authentication checking
+        user = authenticate(request, username=username, password=password)
+        login(request, user)
+        return redirect('polls:index')
     return render(request, 'polls/register.html')

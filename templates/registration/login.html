@@ -1,6 +1,11 @@
 {% extends 'polls/base.html' %}
 
 {% block content%}
+{% if user.is_authenticated %}
+<div>
+    <h1>You already logged in</h1>
+</div>
+{% else %}
 <div>
     <h1>Login</h1>
     <form method="post">
@@ -17,4 +22,5 @@
     <a href="{% url 'polls:register' %}">Register</a>
     </p>
 <div>
+{% endif %}
 {% endblock %}
