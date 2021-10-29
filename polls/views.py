@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required
 from .models import Choice, Question, Vote
 from utils import create_user
 
@@ -38,6 +39,7 @@ def results(request, question_id):
         return redirect('polls:index')
 
 
+@login_required
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     try:
