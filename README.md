@@ -10,3 +10,12 @@ KU Polls is python-based surveying web application, which is designed for [Kaset
   - [Requirements](../../wiki/requirements)
   - [Iteration 1 Plan](../../wiki/iteration-1-plan)
   - [Iteration 2 Plan](../../wiki/iteration-2-plan)
+
+## Running KU Polls
+
+Users provided by the initial data (users.json):
+
+| Username  | Password    |
+|-----------|-------------|
+| demo1     | Vote4me1    |
+| demo2     | Vote4me2    |
