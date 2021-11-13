@@ -70,10 +70,6 @@ TEMPLATES = [
     },
 ]
 
-FIXTURE_DIRS = [
-    os.path.join(BASE_DIR, 'polls/fixures')
-]
-
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
